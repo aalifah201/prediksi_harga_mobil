@@ -2,15 +2,15 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import pickle
-
+import joblib
 # --- Memuat model dan transformer ---
 try:
     with open('catboost_regression_model.pkl', 'rb') as file:
-        model = pickle.load(file)
+        model = joblib.load(file)
     with open('power_transformer.pkl', 'rb') as file:
-        pt = pickle.load(file)
+        pt = joblib.load(file)
     with open('standard_scaler.pkl', 'rb') as file:
-        scaler = pickle.load(file)
+        scaler = joblib.load(file)
 except FileNotFoundError:
     st.error("File model atau transformer tidak ditemukan. Pastikan semua file .pkl berada dalam folder yang sama dengan app.py.")
     st.stop()
